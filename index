@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camorra Gang</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #242426;
+            color: #f9c7d1;
+        }
+        header {
+            background-color: #242426;
+            color: #f9c7d1;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        header nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        header nav a {
+            color: #f9c7d1;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        header nav a:hover {
+            color: #e141e1;
+        }
+        header img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+        }
+        .content {
+            padding: 0;
+        }
+        .image-container {
+            text-align: center;
+            margin: 0;
+        }
+        .image-container img {
+            width: 1255px;
+            height: 720px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+        .text-container {
+            margin-top: 20px;
+            color: #dad8d9;
+            padding: 20px 30px;
+        }
+        .text-container h2 {
+            font-weight: bold;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            text-align: left;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .text-container h2 img {
+            margin-left: 10px;
+        }
+        .text-container p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: center;
+        }
+        footer {
+            margin-top: 20px;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        /* ✅ نافذة القوانين */
+        .rules-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            max-height: 70vh;
+            background: #1e1e1f;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        .rules-popup h2 {
+            text-align: center;
+            color: #e141e1;
+        }
+        .rules-popup p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            font-size: 18px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .close-btn:hover {
+            background: #ff1a1a;
+        }
+
+        /* ✅ خلفية شفافة عند ظهور النافذة */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a onclick="showRules()">القوانين</a>
+            <a href="https://discord.gg/WuEVyqD7AP" target="_blank">التقديم للعصابة</a>
+        </nav>
+        <img src="https://e.top4top.io/p_3355pgnnu1.gif" alt="شعار">
+    </header>
+
+    <div class="content">
+        <div class="image-container">
+            <img src="https://d.top4top.io/p_33553byx81.gif" alt="صورة الموقع">
+        </div>
+        <div class="text-container">
+            <h2>
+                <img src="https://e.top4top.io/p_3355ssfyr1.png" 
+                     alt="إيموجي" style="width: 32px; height: 32px; vertical-align: middle;">
+                قصة العصابة
+            </h2>
+            <p>
+                في شوارع لوس سانتوس المظلمة، حيث تسود الفوضى والجريمة، ظهرت عصابة كامورا الإيطالية كواحدة من أخطر المنظمات الإجرامية. يقودها ريكاردو فيروني، رجل بلا رحمة، يسيطر على تجارة الأسلحة والمخدرات بقبضة حديدية. لا أحد يجرؤ على تحديهم، فمن يفعل... يختفي في ظلام المدينة دون أثر.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Copyright Camorra Gang. Developed by Jalil
+    </footer>
+
+    <!-- ✅ نافذة القوانين -->
+    <div class="overlay" id="overlay" onclick="closeRules()"></div>
+    <div class="rules-popup" id="rulesPopup">
+        <button class="close-btn" onclick="closeRules()">X</button>
+        <h2>قوانين العصابات</h2>
+        <p><b>1.</b> يمنع استخدام البرامج الغش والاعتماد على المساعدة بجميع أنواعها.</p>
+        <p><b>2.</b> يمنع القتل بدون تهديد أو إنذار سابق.</p>
+        <p><b>3.</b> يجب أن يكون الاربي واجبًا في جميع أعمال العصابات.</p>
+        <p><b>4.</b> يمنع مداهمة المنشآت الحكومية بدون إذن إداري.</p>
+        <p><b>5.</b> يمنع رفع السلاح أثناء المطاردة حفاظًا على الحياة.</p>
+        <p><b>6.</b> يجب احترام اللاعبين وعدم إيذائهم دون مبرر.</p>
+        <p><b>7.</b> يمنع الافك داخل مناطق الاحتلال.</p>
+
+        <h2>قوانين السرقة والخطف</h2>
+        <p><b>1.</b> السرقة تتطلب وجود 4 أفراد وسيارة.</p>
+        <p><b>2.</b> يمنع القتال للمتعة فقط.</p>
+        <p><b>3.</b> يمنع خطف اللاعبين الجدد.</p>
+
+        <h2>اللعب العادل</h2>
+        <p><b>1.</b> يمنع استفزاز الشرطة.</p>
+        <p><b>2.</b> يمنع الهروب من المدينة بعد جريمة قبل 15 دقيقة.</p>
+    </div>
+
+    <script>
+        function showRules() {
+            document.getElementById("rulesPopup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closeRules() {
+            document.getElementById("rulesPopup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
